@@ -66,71 +66,69 @@ def tarkistus(heitto):
     print("\n\t\t [1, 2, 3, 4, 5, 6]")
     print("numerot:\t", y)
 
-    def t2(y):
+    def t2(y:list) -> list:
+        """ ottaa numeroita ja palauttaa listan mitä sarjoja numeroista saa """
         selite = []
-        # z = y
-        # z.sort()
         if y.count(2) > 0:
             selite.append("pari")
             if (y.count(2) == 2) or (y.count(3)):
                 selite.append("kaksi paria")
 
+        # jos kolmiluku..
         if y.count(3):
             selite.append("Kolmiluku")
+            # jos lisäksi tasan yksi pari:
             if y.count(2) == 1:
                 selite.append("mökki")
+
         if y.count(4):
             selite.append("Neliluku!")
+
         if y.count(5):
             selite.append("Yatzy!")
-        else:
+
+        else: # pieni ja iso suora
             if sorted(y) == [1, 2, 3, 4, 5]:
                 selite.append("Pieni suora")
             elif sorted(y) == [2, 3, 4, 5, 6]:
                 selite.append("Suuri suora")
+        return selite # palauttaa selkeäkielisen selitteen
 
-        return selite
-
-    def pari(y):  # pari tai kaksi paria
+    def pari(y) -> int:
+        """ pari tai kaksi paria """
         z = y.count(2)
         if z > 0:
-            if z == 1:
-                return 1
-            elif z == 2:
-                return 2
-        else:
-            return 0
+            if z in [1,2]:
+                return z
+        return 0
 
-    def kolmiluku(y):  # kolmiluku tai mökki
-        if y.count(3):
-            if y.count(2):
+    def kolmiluku(y) -> int:
+        """ kolmiluku tai mökki """
+        if y.count(3): # simple kolmiluku
+            if y.count(2): # 3-luku + pari = mökki
                 return 5
-            else:
-                return 3
-        else:
-            return 0
+            return 3
+        return 0
 
-    def suorat(y):  # pieni tai iso suora
-        z = y
-        z.sort()
-        if z == [1, 2, 3, 4, 5]:
+    def suorat(y) -> int:
+        """ pieni tai iso suora """
+        if sorted(y) == [1, 2, 3, 4, 5]:
             return 1
-        if z == [2, 3, 4, 5, 6]:
+        if sorted(y) == [2, 3, 4, 5, 6]:
             return 2
-        else:
-            return 0
+        return 0
 
-    def neliluku(y):  # neliluku
+    def neliluku(y) -> int:
+        """ neliluku """
         if y.count(4):
             return 1
-        else:
-            return 0
+        return 0
 
-    def yatzy(y):  # YATZY
+    def yatzy(y) -> int: 
+        """ YATZY """
         if y.count(5):
             return 5
-        else:
-            return 0
+        return 0
 
     score.insert(0, pari(y))
     score.insert(1, kolmiluku(y))
@@ -159,11 +157,11 @@ def heitaValitut(nopat: list, valitut: list) -> list:
 
 
 def laskeTulos(nopat: list) -> int:
-	# laskee noppien summan
-	t = 0
-	for noppa in nopat:
-		t += nopat[int(noppa)]
-	return t
+    """ Laskee noppien summan """
+    t = 0
+    for noppa in nopat:
+        t += nopat[int(noppa)]
+    return t
 
 
 def merkitseNopat(nopat: list, merkatut) -> list:
