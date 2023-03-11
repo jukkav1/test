@@ -1,2 +1,2 @@
 # test
-Repository kaikenlaisille testikikkareille
+Tehdään yatzy -noppapeli opetellakseni python -ohjelmointia.
