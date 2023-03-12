@@ -66,9 +66,11 @@ def tarkistus(heitto):
     print("\n\t\t [1, 2, 3, 4, 5, 6]")
     print("numerot:\t", y)
 
-    def t2(y:list) -> list:
-        """ ottaa numeroita ja palauttaa listan mitä sarjoja numeroista saa """
+    def t2(y: list) -> list:
+        """ottaa numeroita ja palauttaa listan mitä sarjoja numeroista saa"""
         selite = []
+        print(sorted(y))
+
         if y.count(2) > 0:
             selite.append("pari")
             if (y.count(2) == 2) or (y.count(3)):
@@ -87,45 +89,47 @@ def tarkistus(heitto):
         if y.count(5):
             selite.append("Yatzy!")
 
-        else: # pieni ja iso suora
-            if sorted(y) == [1, 2, 3, 4, 5]:
+        else:  # pieni ja iso suora
+            if y == [1, 1, 1, 1, 1, 0]:
                 selite.append("Pieni suora")
-            elif sorted(y) == [2, 3, 4, 5, 6]:
+            elif y == [0, 1, 1, 1, 1, 1]:
                 selite.append("Suuri suora")
-        return selite # palauttaa selkeäkielisen selitteen
+        return selite  # palauttaa selkeäkielisen selitteen
 
     def pari(y) -> int:
-        """ pari tai kaksi paria """
+        """pari tai kaksi paria"""
         z = y.count(2)
         if z > 0:
-            if z in [1,2]:
+            if z in [1, 2]:
                 return z
         return 0
 
     def kolmiluku(y) -> int:
-        """ kolmiluku tai mökki """
-        if y.count(3): # simple kolmiluku
-            if y.count(2): # 3-luku + pari = mökki
+        """kolmiluku tai mökki"""
+        if y.count(3):  # simple kolmiluku
+            if y.count(2):  # 3-luku + pari = mökki
                 return 5
             return 3
         return 0
 
     def suorat(y) -> int:
-        """ pieni tai iso suora """
-        if sorted(y) == [1, 2, 3, 4, 5]:
+        """pieni tai iso suora"""
+        if y == [1, 1, 1, 1, 1, 0]:
+            print("pieni suora")
             return 1
-        if sorted(y) == [2, 3, 4, 5, 6]:
+        if y == [0, 1, 1, 1, 1, 1]:
+            print("iso suora")
             return 2
         return 0
 
     def neliluku(y) -> int:
-        """ neliluku """
+        """neliluku"""
         if y.count(4):
             return 1
         return 0
 
-    def yatzy(y) -> int: 
-        """ YATZY """
+    def yatzy(y) -> int:
+        """YATZY"""
         if y.count(5):
             return 5
         return 0
@@ -142,8 +146,8 @@ def tarkistus(heitto):
 
 
 def uusiHeitto(nopat: list) -> list:
-    for i in range(0, 5):
-        nopat[i] = randint(1, 6)
+    for _ in range(0, 5):
+        nopat[_] = randint(1, 6)
     return nopat
 
 
@@ -157,48 +161,49 @@ def heitaValitut(nopat: list, valitut: list) -> list:
 
 
 def laskeTulos(nopat: list) -> int:
-    """ Laskee noppien summan """
+    """Laskee noppien summan"""
     t = 0
-    for noppa in nopat:
-        t += nopat[int(noppa)]
+    for _ in nopat:
+        t += nopat[int(_)]
     return t
 
 
 def merkitseNopat(nopat: list, merkatut) -> list:
-	print("Merkataan nopat", merkatut)
-	print("Mihin merkitään?")
-	tarkistus(nopat)
-	return nopat
+    print("Merkataan nopat", merkatut)
+    print("Mihin merkitään?")
+    tarkistus(nopat)
+    return nopat
 
 
 def main():
-	nopat = [0, 0, 0, 0, 0]
-	while 1:
-		h = 1
-		print("\033c")
-		heitto = uusiHeitto(nopat)
-		print(f"{h}. heittosi\t", (heitto))
-		sc = tarkistus(heitto)
-		print("tulos:\t\t", (sc))
+    nopat = [0, 0, 0, 0, 0]
+    while 1:
+        heittocounter = 1
+        print("\033c")
+        heitto = uusiHeitto(nopat)
+        print(f"{heittocounter}. heittosi\t", (heitto))
+        sc = tarkistus(heitto)
+        print("tulos:\t\t", (sc))
 
-		while h < 3:
-			valitut = list(input("\nValitse uudelleenheitettävät nopat: "))
-			h += 1
-			uusiheitto = heitaValitut(heitto, valitut)
-			print(f"{h}. heittosi\t", (uusiheitto))
-			sc = tarkistus(uusiheitto)
-			print("Tulokset:\t", sc)
+        while heittocounter < 3:
+            valitut = list(input("\nValitse uudelleenheitettävät nopat: "))
+            heittocounter += 1
+            uusiheitto = heitaValitut(heitto, valitut)
+            print(f"{heittocounter}. heittosi\t", (uusiheitto))
+            sc = tarkistus(uusiheitto)
+            print("Tulokset:\t", sc)
 
-		valitut = list(input("\nValitse merkattavat nopat."))
-		heitto = merkitseNopat(uusiheitto, valitut)
+        valitut = list(input("\nValitse merkattavat nopat."))
+        heitto = merkitseNopat(uusiheitto, valitut)
 
-		jatka = input("\n\nJatketaanko vielä? Q: quit ")
-		if jatka == "": continue
-		if jatka[0] in ["q", "Q"]:
-			print("Exit.")
-			sys.exit()
-		else:
-			continue
+        jatka = input("\n\nJatketaanko vielä? Q: quit ")
+        if jatka == "":
+            continue
+        if jatka[0] in ["q", "Q"]:
+            print("Exit.")
+            sys.exit()
+        else:
+            continue
 
 
 if __name__ == "__main__":
