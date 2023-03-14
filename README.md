@@ -1,2 +1,2 @@
-# test
-Tehdään yatzy -noppapeli opetellakseni python -ohjelmointia.
+# Yatzy
+Tehdään yatzy -noppapeli opetellakseni Python -ohjelmointia.
