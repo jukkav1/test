@@ -69,7 +69,7 @@ def tarkistus(heitto):
     def t2(y: list) -> list:
         """ottaa numeroita ja palauttaa listan mitä sarjoja numeroista saa"""
         selite = []
-        print(sorted(y))
+        # print(sorted(y))
 
         if y.count(2) > 0:
             selite.append("pari")
@@ -182,16 +182,14 @@ def main():
         print("\033c")
         heitto = uusiHeitto(nopat)
         print(f"{heittocounter}. heittosi\t", (heitto))
-        sc = tarkistus(heitto)
-        print("tulos:\t\t", (sc))
+        print("tulos:\t\t", tarkistus(heitto))
 
         while heittocounter < 3:
             valitut = list(input("\nValitse uudelleenheitettävät nopat: "))
             heittocounter += 1
             uusiheitto = heitaValitut(heitto, valitut)
             print(f"{heittocounter}. heittosi\t", (uusiheitto))
-            sc = tarkistus(uusiheitto)
-            print("Tulokset:\t", sc)
+            print("Tulokset:\t", tarkistus(uusiheitto))
 
         valitut = list(input("\nValitse merkattavat nopat."))
         heitto = merkitseNopat(uusiheitto, valitut)
