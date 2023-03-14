@@ -162,10 +162,10 @@ def heitaValitut(nopat: list, valitut: list) -> list:
 
 def laskeTulos(nopat: list) -> int:
     """Laskee noppien summan"""
-    t = 0
+    tulos = 0
     for _ in nopat:
-        t += nopat[int(_)]
-    return t
+        tulos += nopat[int(_)]
+    return tulos
 
 
 def merkitseNopat(nopat: list, merkatut) -> list:
