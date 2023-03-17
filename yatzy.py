@@ -100,9 +100,7 @@ def main():
         heitto = merkitseNopat(uusiheitto, valitut)
 
         jatka = input("\n\nJatketaanko vielä? Q: quit ")
-        if jatka == "":
-            continue
-        if jatka[0] in ["q", "Q"]:
+        if (jatka != "") and (jatka[0] in ["q", "Q"]):
             print("Exit.")
             sys.exit()
         else:
