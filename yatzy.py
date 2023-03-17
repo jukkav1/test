@@ -96,7 +96,7 @@ def main():
             print(f"{heittocounter}. heittosi\t", (uusiheitto))
             print("Tulokset:\t", tarkistus(uusiheitto))
 
-        valitut = list(input("\nValitse merkattavat nopat."))
+        valitut = list(input("\nValitse merkattavat nopat: "))
         heitto = merkitseNopat(uusiheitto, valitut)
 
         jatka = input("\n\nJatketaanko vielä? Q: quit ")
