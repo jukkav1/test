@@ -59,9 +59,7 @@ def uusiHeitto(nopat: list) -> list:
 def heitaValitut(nopat: list, valitut: list) -> list:
     """Arpoo uudestaan valitut -muuttujassa saadut nopat"""
     for noppa in valitut:
-        print("Noppa", noppa, ".. ", end="")
         nopat[int(noppa)] = randint(1, 6)
-        print(nopat[int(noppa)])
     return nopat
 
 
@@ -81,7 +79,7 @@ def merkitseNopat(nopat: list, merkatut) -> list:
 
 
 def main():
-    nopat = [0, 0, 0, 0, 0]
+    heitto = [0, 0, 0, 0, 0]
 
     # Pelin pääsilmukka alkaa
     while True:
@@ -90,9 +88,9 @@ def main():
 
         # Ensimmäinen heittokerta
         heittocounter = 1
-        heitto = uusiHeitto(nopat)
-        print(f"{heittocounter}. heittosi\t", (heitto))
-        print("tulos:\t\t", tarkistus(heitto))
+        heitto = heitaValitut(heitto, list("01234"))
+        print(f"{heittocounter}. heittosi:\t{heitto}")
+        print(f"tulos:\t\t{tarkistus(heitto)}")
 
         # Kolme heittoa ; kaksi vielä
         while heittocounter < 3:
