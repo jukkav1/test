@@ -82,13 +82,19 @@ def merkitseNopat(nopat: list, merkatut) -> list:
 
 def main():
     nopat = [0, 0, 0, 0, 0]
-    while 1:
-        heittocounter = 1
+
+    # Pelin pääsilmukka alkaa
+    while True:
+        # Tyhjätään ruutu
         print("\033c")
+
+        # Ensimmäinen heittokerta
+        heittocounter = 1
         heitto = uusiHeitto(nopat)
         print(f"{heittocounter}. heittosi\t", (heitto))
         print("tulos:\t\t", tarkistus(heitto))
 
+        # Kolme heittoa ; kaksi vielä
         while heittocounter < 3:
             valitut = list(input("\nValitse uudelleenheitettävät nopat: "))
             heittocounter += 1
