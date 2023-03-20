@@ -60,7 +60,7 @@ def uusiHeitto(nopat: list) -> list:
 def heitaValitut(nopat: list, valitut: list) -> list:
     """Arpoo uudestaan valitut nopat"""
     for noppa in valitut:
-        print("Noppa", noppa, ".. ", end="")
+        print(f"Noppa {noppa} .. ", end="")
         nopat[int(noppa)] = randint(1, 6)
         print(nopat[int(noppa)])
     return nopat
