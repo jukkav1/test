@@ -18,7 +18,6 @@ def tarkistus(heitto):
     def t2(y: list) -> list:
         """ottaa numeroita ja palauttaa listan mitä sarjoja numeroista saa"""
         selite = []
-        # print(sorted(y))
 
         if y.count(2) > 0:
             selite.append("pari")
@@ -64,10 +63,10 @@ def tarkistus(heitto):
     def suorat(y) -> int:
         """pieni tai iso suora"""
         if y == [1, 1, 1, 1, 1, 0]:
-            print("pieni suora")
+            # print("pieni suora")
             return 1
         if y == [0, 1, 1, 1, 1, 1]:
-            print("iso suora")
+            # print("iso suora")
             return 2
         return 0
 
