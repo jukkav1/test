@@ -15,7 +15,7 @@ def tarkistus(heitto):
     print("\n\t\t [1, 2, 3, 4, 5, 6]")
     print("numerot:\t", y)
 
-    def t2(y: list) -> list:
+    def lisaaSelite(y: list) -> list:
         """ottaa numeroita ja palauttaa listan mitä sarjoja numeroista saa"""
         selite = []
 
@@ -88,6 +88,6 @@ def tarkistus(heitto):
     score.insert(3, yatzy(y))
     score.insert(4, suorat(y))
 
-    print(t2(y))
+    print(lisaaSelite(y))
 
     return score
