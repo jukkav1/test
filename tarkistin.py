@@ -26,22 +26,22 @@ def tarkistus(heitto):
 
         # jos kolmiluku..
         if y.count(3):
-            selite.append("Kolmiluku")
+            selite.append("kolmiluku")
             # jos lisäksi tasan yksi pari:
             if y.count(2) == 1:
                 selite.append("mökki")
 
         if y.count(4):
-            selite.append("Neliluku!")
+            selite.append("neliluku")
 
         if y.count(5):
-            selite.append("Yatzy!")
+            selite.append("YATZY")
 
         else:  # pieni ja iso suora
             if y == [1, 1, 1, 1, 1, 0]:
-                selite.append("Pieni suora")
+                selite.append("pieni suora")
             elif y == [0, 1, 1, 1, 1, 1]:
-                selite.append("Suuri suora")
+                selite.append("suuri suora")
         return selite  # palauttaa selkeäkielisen selitteen
 
     def pari(y) -> int:
