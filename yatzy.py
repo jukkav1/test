@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 from random import randint
-import sys
 from tarkistin import tarkistus
 
 max_pisteet = {
@@ -50,12 +49,6 @@ poytakirja = {
 }
 
 
-def uusiHeitto(nopat: list) -> list:
-    for _ in range(0, 5):
-        nopat[_] = randint(1, 6)
-    return nopat
-
-
 def heitaValitut(nopat: list, valitut: list) -> list:
     """Arpoo uudestaan valitut -muuttujassa saadut nopat"""
     for noppa in valitut:
@@ -85,7 +78,7 @@ def main():
     while 1:
         heittocounter = 1
         print("\033c")
-        heitto = uusiHeitto(nopat)
+        heitto = heitaValitut(nopat, [0, 1, 2, 3, 4])
         print(f"{heittocounter}. heittosi\t", (heitto))
         print("tulos:\t\t", tarkistus(heitto))
 
@@ -101,10 +94,8 @@ def main():
 
         jatka = input("\n\nJatketaanko vielä? Q: quit ")
         if (jatka != "") and (jatka[0] in ["q", "Q"]):
-            print("Exit.")
-            sys.exit()
-        else:
-            continue
+            break
+        continue
 
 
 if __name__ == "__main__":
