@@ -83,7 +83,7 @@ def main():
         print("\033c")
         heitto = heitaValitut(nopat, [0, 1, 2, 3, 4])
         print(f"{heittocounter}. heittosi:\t{(heitto)}")
-        print("tulos:\t\t", tarkistus(heitto))
+        print(f"tulos:\t\t{tarkistus(heitto)}")
 
         while heittocounter < 3:
             valitut = list(input("\nValitse uudelleenheitettävät nopat: "))
