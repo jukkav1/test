@@ -51,9 +51,11 @@ poytakirja = {
 
 def heitaValitut(nopat: list, valitut: list) -> list:
     """Arpoo uudestaan valitut nopat"""
+    msg = ""
     for noppa in valitut:
         nopat[int(noppa)] = randint(1, 6)
-        print(f"{nopat[int(noppa)]}, ", end=" ")
+        msg = msg + f"{nopat[int(noppa)]}, "
+    print(msg.strip(", "))
     print()
     return nopat
 
