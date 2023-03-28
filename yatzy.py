@@ -54,6 +54,7 @@ def heitaValitut(nopat: list, valitut: list) -> list:
     for noppa in valitut:
         nopat[int(noppa)] = randint(1, 6)
         print(f"{nopat[int(noppa)]}, ", end=" ")
+    print()
     return nopat
 
 
@@ -81,7 +82,7 @@ def main():
         heittocounter = 1
         print("\033c")
         heitto = heitaValitut(nopat, [0, 1, 2, 3, 4])
-        print(f"{heittocounter}. heittosi\t", (heitto))
+        print(f"{heittocounter}. heittosi:\t{(heitto)}")
         print("tulos:\t\t", tarkistus(heitto))
 
         while heittocounter < 3:
