@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 from random import randint
-import sys
 from tarkistin import tarkistus
 
 max_pisteet = {
@@ -50,16 +49,11 @@ poytakirja = {
 }
 
 
-def uusiHeitto(nopat: list) -> list:
-    for _ in range(0, 5):
-        nopat[_] = randint(1, 6)
-    return nopat
-
-
 def heitaValitut(nopat: list, valitut: list) -> list:
-    """Arpoo uudestaan valitut -muuttujassa saadut nopat"""
+    """Arpoo uudestaan valitut nopat"""
     for noppa in valitut:
         nopat[int(noppa)] = randint(1, 6)
+        print(f"{nopat[int(noppa)]}, ", end=" ")
     return nopat
 
 
@@ -72,6 +66,8 @@ def laskeTulos(nopat: list) -> int:
 
 
 def merkitseNopat(nopat: list, merkatut) -> list:
+    """Merkitään 'merkatut' nopat tulostaulukkoon"""
+    ### Tämä ei ole valmis ###
     print("Merkataan nopat", merkatut)
     print("Mihin merkitään?")
     tarkistus(nopat)
@@ -79,20 +75,15 @@ def merkitseNopat(nopat: list, merkatut) -> list:
 
 
 def main():
-    heitto = [0, 0, 0, 0, 0]
-
-    # Pelin pääsilmukka alkaa
-    while True:
-        # Tyhjätään ruutu
-        print("\033c")
-
-        # Ensimmäinen heittokerta
+    """Pääohjelma"""
+    nopat = [0, 0, 0, 0, 0]
+    while 1:
         heittocounter = 1
-        heitto = heitaValitut(heitto, list("01234"))
-        print(f"{heittocounter}. heittosi:\t{heitto}")
-        print(f"tulos:\t\t{tarkistus(heitto)}")
+        print("\033c")
+        heitto = heitaValitut(nopat, [0, 1, 2, 3, 4])
+        print(f"{heittocounter}. heittosi\t", (heitto))
+        print("tulos:\t\t", tarkistus(heitto))
 
-        # Kolme heittoa ; kaksi vielä
         while heittocounter < 3:
             valitut = list(input("\nValitse uudelleenheitettävät nopat: "))
             heittocounter += 1
@@ -100,15 +91,13 @@ def main():
             print(f"{heittocounter}. heittosi\t", (uusiheitto))
             print("Tulokset:\t", tarkistus(uusiheitto))
 
-        valitut = list(input("\nValitse merkattavat nopat: "))
+        valitut = list(input("\nValitse merkattavat nopat."))
         heitto = merkitseNopat(uusiheitto, valitut)
 
         jatka = input("\n\nJatketaanko vielä? Q: quit ")
         if (jatka != "") and (jatka[0] in ["q", "Q"]):
-            print("Exit.")
-            sys.exit()
-        else:
-            continue
+            break
+        continue
 
 
 if __name__ == "__main__":
