@@ -50,9 +50,9 @@ poytakirja = {
 
 
 def heitaValitut(nopat: list, valitut: list) -> list:
-    """Arpoo uudestaan valitut -muuttujassa saadut nopat"""
+    """Arpoo uudestaan valitut nopat"""
     for noppa in valitut:
-        print("Noppa", noppa, ".. ", end="")
+        print(f"Noppa {noppa} .. ", end="")
         nopat[int(noppa)] = randint(1, 6)
         print(nopat[int(noppa)])
     return nopat
@@ -67,6 +67,8 @@ def laskeTulos(nopat: list) -> int:
 
 
 def merkitseNopat(nopat: list, merkatut) -> list:
+    """Merkitään 'merkatut' nopat tulostaulukkoon"""
+    ### Tämä ei ole valmis ###
     print("Merkataan nopat", merkatut)
     print("Mihin merkitään?")
     tarkistus(nopat)
@@ -74,6 +76,7 @@ def merkitseNopat(nopat: list, merkatut) -> list:
 
 
 def main():
+    """Pääohjelma"""
     nopat = [0, 0, 0, 0, 0]
     while 1:
         heittocounter = 1

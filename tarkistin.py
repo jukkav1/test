@@ -15,10 +15,9 @@ def tarkistus(heitto):
     print("\n\t\t [1, 2, 3, 4, 5, 6]")
     print("numerot:\t", y)
 
-    def t2(y: list) -> list:
+    def lisaaSelite(y: list) -> list:
         """ottaa numeroita ja palauttaa listan mitä sarjoja numeroista saa"""
         selite = []
-        # print(sorted(y))
 
         if y.count(2) > 0:
             selite.append("pari")
@@ -27,22 +26,22 @@ def tarkistus(heitto):
 
         # jos kolmiluku..
         if y.count(3):
-            selite.append("Kolmiluku")
+            selite.append("kolmiluku")
             # jos lisäksi tasan yksi pari:
             if y.count(2) == 1:
                 selite.append("mökki")
 
         if y.count(4):
-            selite.append("Neliluku!")
+            selite.append("neliluku")
 
         if y.count(5):
-            selite.append("Yatzy!")
+            selite.append("YATZY")
 
         else:  # pieni ja iso suora
             if y == [1, 1, 1, 1, 1, 0]:
-                selite.append("Pieni suora")
+                selite.append("pieni suora")
             elif y == [0, 1, 1, 1, 1, 1]:
-                selite.append("Suuri suora")
+                selite.append("suuri suora")
         return selite  # palauttaa selkeäkielisen selitteen
 
     def pari(y) -> int:
@@ -64,10 +63,10 @@ def tarkistus(heitto):
     def suorat(y) -> int:
         """pieni tai iso suora"""
         if y == [1, 1, 1, 1, 1, 0]:
-            print("pieni suora")
+            # print("pieni suora")
             return 1
         if y == [0, 1, 1, 1, 1, 1]:
-            print("iso suora")
+            # print("iso suora")
             return 2
         return 0
 
@@ -89,6 +88,6 @@ def tarkistus(heitto):
     score.insert(3, yatzy(y))
     score.insert(4, suorat(y))
 
-    print(t2(y))
+    print(lisaaSelite(y))
 
     return score
