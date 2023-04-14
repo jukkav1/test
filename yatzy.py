@@ -51,12 +51,8 @@ poytakirja = {
 
 def heitaValitut(nopat: list, valitut: list) -> list:
     """Arpoo uudestaan valitut nopat"""
-    msg = ""
     for _ in valitut:
         nopat[int(_)] = randint(1, 6)
-        msg = msg + f"{nopat[int(_)]}, "
-    print(msg.strip(", "))
-    print()
     return nopat
 
 
@@ -91,7 +87,7 @@ def main():
             valitut = list(input("\nValitse uudelleenheitettävät nopat: "))
             heittocounter += 1
             uusiheitto = heitaValitut(heitto, valitut)
-            print(f"{heittocounter}. heittosi\t", (uusiheitto))
+            print(f"{heittocounter}. heittosi:\t{uusiheitto}")
             print("Tulokset:\t", tarkistus(uusiheitto))
 
         valitut = list(input("\nValitse merkattavat nopat."))
