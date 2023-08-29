@@ -1,3 +1,4 @@
+""" Yatzy """
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
@@ -49,14 +50,14 @@ poytakirja = {
 }
 
 
-def heitaValitut(nopat: list, valitut: list) -> list:
+def heita_valitut(nopat: list, valitut: list) -> list:
     """Arpoo uudestaan valitut nopat"""
     for _ in valitut:
         nopat[int(_)] = randint(1, 6)
     return nopat
 
 
-def laskeTulos(nopat: list) -> int:
+def laske_tulos(nopat: list) -> int:
     """Laskee noppien summan"""
     tulos = 0
     for _ in nopat:
@@ -64,7 +65,7 @@ def laskeTulos(nopat: list) -> int:
     return tulos
 
 
-def merkitseNopat(nopat: list, merkatut) -> list:
+def merkitse_nopat(nopat: list, merkatut) -> list:
     """Merkitään 'merkatut' nopat tulostaulukkoon"""
     ### Tämä ei ole valmis ###
     print("Merkataan nopat", merkatut)
@@ -79,19 +80,19 @@ def main():
     while 1:
         heittocounter = 1
         print("\033c")
-        heitto = heitaValitut(nopat, [0, 1, 2, 3, 4])
+        heitto = heita_valitut(nopat, [0, 1, 2, 3, 4])
         print(f"{heittocounter}. heittosi:\t{(heitto)}")
         print(f"tulos:\t\t{tarkistus(heitto)}")
 
         while heittocounter < 3:
             valitut = list(input("\nValitse uudelleenheitettävät nopat: "))
             heittocounter += 1
-            uusiheitto = heitaValitut(heitto, valitut)
+            uusiheitto = heita_valitut(heitto, valitut)
             print(f"{heittocounter}. heittosi:\t{uusiheitto}")
             print("Tulokset:\t", tarkistus(uusiheitto))
 
         valitut = list(input("\nValitse merkattavat nopat."))
-        heitto = merkitseNopat(uusiheitto, valitut)
+        heitto = merkitse_nopat(uusiheitto, valitut)
 
         jatka = input("\n\nJatketaanko vielä? Q: quit ")
         if (jatka != "") and (jatka[0] in ["q", "Q"]):
